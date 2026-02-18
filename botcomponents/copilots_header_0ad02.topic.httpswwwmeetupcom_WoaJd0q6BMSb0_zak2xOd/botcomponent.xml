@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwwmeetupcom_WoaJd0q6BMSb0_zak2xOd">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.meetup.com website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.meetup.com</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,23 @@
+kind: TaskDialog
+response:
+  activity:
+  mode: Generated
+
+inputs:
+  - kind: AutomaticTaskInput
+    propertyName: Text_20input
+    name: Text input
+    description: Table
+    entity:
+      kind: ClosedListEntityReference
+      entityId: copilots_header_0ad02.entity.RecordTable
+
+    shouldPromptUser: true
+
+modelDisplayName: Table Creater
+modelDescription: this tool creates a table.
+action:
+  kind: InvokeAIBuilderModelTaskAction
+  aIModelId: a31b79aa-7f0d-4705-872c-0d965f7e87f8
+
+outputMode: All

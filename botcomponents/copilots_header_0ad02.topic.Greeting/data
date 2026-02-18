@@ -1,0 +1,21 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Greeting
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Good afternoon
+      - Good morning
+      - Hello
+      - Hey
+      - Hi
+
+  actions:
+    - kind: BeginDialog
+      id: E3DwZy
+      dialog: copilots_header_0ad02.topic.TravelInformation
+
+    - kind: EndDialog
+      id: R9YKNp

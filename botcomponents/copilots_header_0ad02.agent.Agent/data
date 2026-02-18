@@ -1,0 +1,38 @@
+kind: AgentDialog
+response:
+  activity:
+    attachments:
+      - kind: AdaptiveCardTemplate
+        cardContent: |-
+          {
+            "type": "AdaptiveCard",
+            "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Input.Toggle",
+                "title": "Passport",
+                "id": "item1"
+              },
+              {
+                "type": "Input.Toggle",
+                "title": "Socks",
+                "id": "item2"
+              },
+              {
+                "type": "Input.Toggle",
+                "title": "Toothbrush",
+                "id": "item3"
+              }
+            ]
+          }
+
+  mode: Strict
+
+beginDialog:
+  kind: OnRedirect
+  id: main
+
+settings: {}
+inputType: {}
+outputType: {}

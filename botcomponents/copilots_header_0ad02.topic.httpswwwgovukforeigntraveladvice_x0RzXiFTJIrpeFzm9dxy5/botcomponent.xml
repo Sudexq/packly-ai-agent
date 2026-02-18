@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwwgovukforeigntraveladvice_x0RzXiFTJIrpeFzm9dxy5">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.gov.uk/foreign-travel-advice website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.gov.uk/foreign-travel-advice</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

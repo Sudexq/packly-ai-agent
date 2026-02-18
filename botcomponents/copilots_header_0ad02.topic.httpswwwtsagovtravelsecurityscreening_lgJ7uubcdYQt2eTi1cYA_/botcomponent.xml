@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwwtsagovtravelsecurityscreening_lgJ7uubcdYQt2eTi1cYA_">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.tsa.gov/travel/security-screening/ website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.tsa.gov/travel/security-screening/</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

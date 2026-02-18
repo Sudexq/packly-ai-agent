@@ -1,0 +1,11 @@
+<botcomponent_workflowset>
+  <botcomponent_workflow botcomponentid.schemaname="copilots_header_0ad02.ExternalTriggerComponent.RecurringCopilotT.2d1d94f5-a079-4d9d-9a73-9515877fd49" workflowid.workflowid="01656f87-0e0b-f111-8407-000d3a675809">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="copilots_header_0ad02.ExternalTriggerComponent.Whenanewchannelme.72fd58b3-000f-470a-b6d5-0e5f3ab09d8" workflowid.workflowid="17d274a9-310b-f111-8407-000d3a675809">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="copilots_header_0ad02.topic.LocalLuggage" workflowid.workflowid="a5760f29-0308-f111-8407-000d3a675809">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+</botcomponent_workflowset>

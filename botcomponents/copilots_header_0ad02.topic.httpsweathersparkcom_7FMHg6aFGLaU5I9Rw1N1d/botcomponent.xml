@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpsweathersparkcom_7FMHg6aFGLaU5I9Rw1N1d">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://weatherspark.com website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://weatherspark.com</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,149 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26013.152" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26013.00152">
+  <Entities></Entities>
+  <Roles></Roles>
+  <Workflows>
+    <Workflow WorkflowId="{a5760f29-0308-f111-8407-000d3a675809}" Name="Pdf Creater">
+      <JsonFileName>/Workflows/PdfCreater-A5760F29-0308-F111-8407-000D3A675809.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>1</ModernFlowType>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="Pdf Creater" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{01656f87-0e0b-f111-8407-000d3a675809}" Name="Recurring Copilot Trigger" Description="Create a trigger to automatically call your copilot repeatedly">
+      <JsonFileName>/Workflows/RecurringCopilotTrigger-01656F87-0E0B-F111-8407-000D3A675809.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>0</ModernFlowType>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="Recurring Copilot Trigger" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description languagecode="1033" description="Create a trigger to automatically call your copilot repeatedly" />
+      </Descriptions>
+    </Workflow>
+    <Workflow WorkflowId="{17d274a9-310b-f111-8407-000d3a675809}" Name="When a new channel message is added" Description="Trigger your agent with certain message upon event: When a new channel message is added.">
+      <JsonFileName>/Workflows/Whenanewchannelmessageisadded-17D274A9-310B-F111-8407-000D3A675809.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.1.0.1</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>0</ModernFlowType>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="When a new channel message is added" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description languagecode="1033" description="Trigger your agent with certain message upon event: When a new channel message is added." />
+      </Descriptions>
+    </Workflow>
+  </Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <AIModels>
+    <AIModel>
+      <msdyn_aimodelid>{a31b79aa-7f0d-4705-872c-0d965f7e87f8}</msdyn_aimodelid>
+      <msdyn_name>Table Creater</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{5a82fde3-93e3-4e04-a583-cb23cebfcd66}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{5a82fde3-93e3-4e04-a583-cb23cebfcd66}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You will receive a record or array. Convert the input into a table inside an Adaptive Card using the Table element (version 1.5). \nThe table must include:\n- Columns with auto and stretch widths\n- A header row\n- One row for each item in the input\n\nReturn only the \"body\" array of the Adaptive Card.\nNo schema, no wrapper fields, just the body.\n  "},{"type":"inputVariable","id":"Text_20input"},{"type":"literal","text":" "}],"definitions":{"inputs":[{"id":"Text_20input","text":"Text input","type":"text","quickTestValue":"I packed quite a few things in my suitcase for this trip. I have my laptop, a portable monitor, two phone chargers, a power bank, and some noise-cancelling headphones for work and entertainment. I also included several outfits: a couple of t-shirts, two pairs of jeans, a lightweight jacket, socks, underwear, and a pair of sneakers. For personal care, I brought my toothbrush, shampoo, deodorant, sunscreen, and a small travel-size shaving kit. "}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>2</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>a31b79aa-7f0d-4705-872c-0d965f7e87f8_2/13/2026 12:07:28 PM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWQPQvCMBRF/4q8OYOKOGSrHwUXC21xlWhTDbRJSF7AUvrfTayiGBfnc+/Ju+mh0PycKtMyPHBjhZJAZwR2UjvMlcKtRIEd0B42wuqGdXvWcqAABBJEI04OuQ245Dc8zqciFON4oJOREcg0+ndYA7RmjeUEyk6HUOF98gIDAVZVYsyslUTfjY1JFPkUo3Fv74pZvly87IP3Zw7/3ff7irDLR6MBtZDCXnPObPjQ71b6oJMnjur+xDucNKc2mAEAAA==</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{a31b79aa-7f0d-4705-872c-0d965f7e87f8}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{578e5fab-d308-f111-8407-000d3a675809}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{578e5fab-d308-f111-8407-000d3a675809}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>15fe0425-0452-4e6c-b4d7-8acac5064473</msdyn_modeldata>
+          <msdyn_name>a31b79aa-7f0d-4705-872c-0d965f7e87f8_Training_2/13/2026 12:01:11 PM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{a31b79aa-7f0d-4705-872c-0d965f7e87f8}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+  </AIModels>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

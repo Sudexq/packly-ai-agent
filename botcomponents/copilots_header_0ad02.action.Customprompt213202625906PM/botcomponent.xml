@@ -1,0 +1,10 @@
+<botcomponent schemaname="copilots_header_0ad02.action.Customprompt213202625906PM">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Custom prompt 2/13/2026, 2:59:06 PM</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

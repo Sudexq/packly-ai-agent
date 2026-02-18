@@ -1,0 +1,114 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_5vxfIx
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Global.userResponse
+      prompt: |-
+        Could you please list what you have already packed for your {Global.arrivalCity} trip? 
+
+        **Just a simple list** (e.g., coat, shirts, shoes, charger) is perfect. This will help me spot any essentials you might be missing based on the weather and your travel purpose.
+
+        If you didn't pack yet you can write **Nothing**. 
+      entity: StringPrebuiltEntity
+
+    - kind: SearchAndSummarizeContent
+      id: 0c2pJo
+      userInput: "=Concatenate(\"added items to luggage for now: \",Global.userResponse, \"weather information: \",Global.weatherResult, \"between \", Global.startDate, \"and\", Global.endDate , \"arrival city: \", Global.arrivalCity, \"tarvel purpose: \", Global.travelPurpose)"
+      additionalInstructions: |-
+        This input may contain multiple sections concatenated together (e.g., added items, weather information, dates, arrival city, travel purpose).
+        Your output must ALWAYS be clean text.
+        Do NOT output JSON, arrays, schemas, code blocks, or Adaptive Cards.
+        You ALWAYS generate a detailed **packing checklist**.
+        ================================================
+        GENERAL OUTPUT RULES
+        - Output must always be **plain text only**.
+        - Use ✓, ✅, ⚠️ emojis.
+        - The style must be friendly, helpful, and mobile‑friendly.
+        - You MAY use any item name. There is **no allowed item list restriction**.
+        - You may freely generate new packing items as long as they are safe, realistic, and non-harmful.
+        - Weather information and travel purpose should influence recommendations.
+
+        ================================================
+        🧩 DETECTED ITEMS
+        Scan the entire concatenated userInput and list any items the user already mentioned.
+        Format each detected item as:
+        ✓
+        If nothing is detected → write:
+        (none detected)
+        ================================================
+        🧠 SUGGESTED ITEMS
+        Suggest **8–15 additional items** that would make sense for the user’s trip.
+        Your suggestions should adapt intelligently to:
+        ### WEATHER
+        Use keywords like sunny, rainy, snow, cold, hot, temperature values:
+        - rainy → umbrella, waterproof jacket, cover bag
+        - cold / snowy → warm clothing, thick socks, layers
+        - sunny / UV high → sunscreen, sunglasses, water bottle
+        - hot (≥ 25°C) → breathable clothing, hydration items
+        - cool (6–12°C) → light jacket, scarf
+        - unclear weather → neutral everyday travel items
+
+        ### TRAVEL PURPOSE
+        - beach → swimsuit, beach towel, sunscreen, flip-flops
+        - business → laptop, charger, dress shirt, ID documents
+        - hiking → snacks, first‑aid kit, sturdy shoes
+        - city trip → comfortable shoes, light jacket
+        - romantic getaway → nice outfit, travel-size toiletries
+
+        Format each suggestion as:
+        ✅
+        ================================================
+        🗺️ RECOMMENDATIONS & TRAVEL TIPS
+        Give **3–5 short advisory notes**, using ⚠️ emoji.
+        You may reference:
+        - weather conditions
+        - arrival city
+        - dates
+        - travel purpose
+
+        Example style:
+        ⚠️ Check the weather forecast again on your departure day.
+        ⚠️ Keep essential documents in an easy-access pocket.
+        ⚠️ For sunny trips, recharge your power bank before travel.
+        ================================================
+        FINAL RULE
+        Your entire output must ALWAYS be plain text, readable, mobile‑friendly, and formatted ONLY with ✓, ✅, ⚠️ emojis.
+        No JSON. No arrays. No code blocks. No Adaptive Cards.
+      webBrowsing: true
+
+    - kind: Question
+      id: question_d4B8Vv
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.checlikstChoice
+      prompt: Would you like to contunie?(Local Information & luggage waning section.)
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Yes
+              displayName: Yes
+
+    - kind: ConditionGroup
+      id: conditionGroup_jHgLva
+      conditions:
+        - id: conditionItem_tz4wkp
+          condition: =Topic.checlikstChoice = 'copilots_header_0ad02.topic.Checklist.main.question_d4B8Vv'.Yes
+          actions:
+            - kind: BeginDialog
+              id: ZIOLVc
+              dialog: copilots_header_0ad02.topic.LocalLuggage
+
+            - kind: EndDialog
+              id: zhM5AS
+
+inputType: {}
+outputType: {}

@@ -1,0 +1,237 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: question_EiBWUM
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.tripValue
+      prompt: Do you want to pack your trip?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Yes
+              displayName: Yes
+
+            - id: No
+              displayName: No
+
+    - kind: ConditionGroup
+      id: conditionGroup_8veC66
+      conditions:
+        - id: conditionItem_5PoN1o
+          condition: =Topic.tripValue = 'copilots_header_0ad02.topic.TravelInformation.main.question_EiBWUM'.Yes
+          actions:
+            - kind: AdaptiveCardPrompt
+              id: u4jcvO
+              card: |-
+                {
+                  "type": "AdaptiveCard",
+                  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+                  "version": "1.5",
+                  "body": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Travel details",
+                      "weight": "Bolder",
+                      "size": "Large"
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "departureCity",
+                      "placeholder": "e.g., Istanbul",
+                      "isRequired": true,
+                      "errorMessage": "Departure City is required",
+                      "label": "Departure City"
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "arrivalCity",
+                      "placeholder": "e.g., Berlin",
+                      "isRequired": true,
+                      "errorMessage": "Arrival city is required",
+                      "label": "Arrival city"
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "startDate",
+                      "placeholder": "00.00.0000",
+                      "isRequired": true,
+                      "errorMessage": "Start date is required",
+                      "label": "Start date"
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "endDate",
+                      "placeholder": "00.00.0000",
+                      "isRequired": true,
+                      "errorMessage": "End date is required",
+                      "label": "End date"
+                    },
+                    {
+                      "type": "Input.ChoiceSet",
+                      "id": "travelPurpose",
+                      "placeholder": "Purpose",
+                      "choices": [
+                        {
+                          "title": "Business",
+                          "value": "business"
+                        },
+                        {
+                          "title": "Leisure/Beach",
+                          "value": "beach"
+                        },
+                        {
+                          "title": "Sport",
+                          "value": "sport"
+                        },
+                        {
+                          "title": "Family",
+                          "value": "family"
+                        },
+                        {
+                          "title": "Other",
+                          "value": "other"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Input.Number",
+                      "id": "passengerCount",
+                      "placeholder": "How many travelers?",
+                      "min": 1,
+                      "max": 20,
+                      "isRequired": true,
+                      "errorMessage": "Passenger Count is required",
+                      "label": "Passenger Count"
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": "Action.Submit",
+                      "title": "Continue",
+                      "data": {
+                        "actionSubmitId": "submitTravelDetails"
+                      }
+                    }
+                  ]
+                }
+              output:
+                binding:
+                  actionSubmitId: Global.actionSubmitId
+                  arrivalCity: Global.arrivalCity
+                  departureCity: Global.departureCity
+                  endDate: Global.endDate
+                  passengerCount: Global.passengerCount
+                  startDate: Global.startDate
+                  travelPurpose: Global.travelPurpose
+
+              outputType:
+                properties:
+                  actionSubmitId: String
+                  arrivalCity: String
+                  departureCity: String
+                  endDate: String
+                  passengerCount: Number
+                  startDate: String
+                  travelPurpose: String
+
+        - id: conditionItem_kQVGT5
+          condition: =Topic.tripValue = 'copilots_header_0ad02.topic.TravelInformation.main.question_EiBWUM'.No
+
+    - kind: SendActivity
+      id: sendActivity_eLomkq
+      activity: |-
+        Here are your trip details:
+
+        - From:{Global.departureCity}
+        - To: {Global.arrivalCity}
+        - Start Date: {Global.startDate}
+        - End Date: {Global.endDate}
+        - Passengers: {Global.passengerCount}
+        - Purpose: {Global.travelPurpose}
+
+    - kind: Question
+      id: question_bfSkTZ
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.choiceConfirm
+      prompt: Please Confirm All of the details below.
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Yes
+              displayName: Yes
+
+            - id: No
+              displayName: No
+
+    - kind: ConditionGroup
+      id: conditionGroup_PS9DSm
+      conditions:
+        - id: conditionItem_RA4qij
+          condition: =Topic.choiceConfirm = 'copilots_header_0ad02.topic.TravelInformation.main.question_bfSkTZ'.Yes
+
+        - id: conditionItem_YQ5Phn
+          condition: =Topic.choiceConfirm = 'copilots_header_0ad02.topic.TravelInformation.main.question_bfSkTZ'.No
+          actions:
+            - kind: GotoAction
+              id: 0ltST4
+              actionId: u4jcvO
+
+    - kind: SearchAndSummarizeContent
+      id: dv6d7N
+      latencyMessageSettings:
+        allowLatencyMessage: false
+
+      variable: Global.weatherResult
+      userInput: =Concatenate(Global.arrivalCity, Global.startDate,Global.endDate)
+      additionalInstructions: |-
+        Using the inputs {Global.arrivalCity}, {Global.startDate}, and {Global.endDate}, produce a list of daily weather information for every date in this range.
+        For each day:
+        - Output the date (YYYY-MM-DD)
+        - Output the minimum and maximum temperature in °C
+        - Output the weather condition (snowy, rainy, sunny, or cloudy) ONLY.
+        If a specific day's data cannot be found, still output the date with "no-data, -, - °C".
+        Format each line EXACTLY as:
+        YYYY-MM-DD: condition, min-max °C
+      webBrowsing: true
+      fileSearchDataSource:
+        searchFilesMode:
+          kind: DoNotSearchFiles
+
+      knowledgeSources:
+        kind: SearchSpecificKnowledgeSources
+        knowledgeSources:
+          - copilots_header_0ad02.topic.httpsweathersparkcom_7FMHg6aFGLaU5I9Rw1N1d
+          - copilots_header_0ad02.topic.httpswwwclimatedataorg_zolf8D5GmLuyAj4OeINCT
+          - copilots_header_0ad02.topic.httpsglobalweathercom_3iEhtUnzepyrW1bBS7OFU
+          - copilots_header_0ad02.topic.httpsweathercom_4ZFXR64esC_zA2BJDO20l
+          - copilots_header_0ad02.topic.httpswwwaccuweathercomenworldweather_c1xOaLwjpLiLJfUMmvYc9
+
+      publicDataSource:
+        sites:
+          - "https://www.accuweather.com"
+          - "https://en.climate-data.org/"
+          - "https://www.ventusky.com/"
+          - "https://www.timeanddate.com/weather/"
+
+      responseCaptureType: TextOnly
+
+    - kind: BeginDialog
+      id: 4UbOTm
+      dialog: copilots_header_0ad02.topic.Checklist
+
+    - kind: EndDialog
+      id: BHNdE0
+
+inputType: {}
+outputType: {}

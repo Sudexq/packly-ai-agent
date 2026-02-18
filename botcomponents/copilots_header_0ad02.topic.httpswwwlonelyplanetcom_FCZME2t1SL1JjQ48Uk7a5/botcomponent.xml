@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwwlonelyplanetcom_FCZME2t1SL1JjQ48Uk7a5">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.lonelyplanet.com website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.lonelyplanet.com</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

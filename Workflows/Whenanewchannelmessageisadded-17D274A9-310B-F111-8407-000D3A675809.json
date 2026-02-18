@@ -1,0 +1,85 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_teams": {
+        "api": {
+          "name": "shared_teams"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "cr1d0_sharedteams_fdbe2"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_microsoftcopilotstudio": {
+        "api": {
+          "name": "shared_microsoftcopilotstudio"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "cr1d0_sharedmicrosoftcopilotstudio_98007"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_a_new_channel_message_is_added": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "groupId": "b23af7c2-156c-4a74-8d68-f9f98adf870e",
+              "channelId": "19:138ab3180070400e862fe49bdab20aaf@thread.tacv2"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+              "operationId": "OnNewChannelMessage",
+              "connectionName": "shared_teams"
+            }
+          },
+          "recurrence": {
+            "interval": 1,
+            "frequency": "Minute"
+          }
+        }
+      },
+      "actions": {
+        "For_each": {
+          "type": "Foreach",
+          "foreach": "@triggerOutputs()?['body']",
+          "actions": {
+            "Sends_a_prompt_to_the_specified_copilot_for_processing": {
+              "type": "OpenApiConnection",
+              "description": "Sends the message content to Copilot and requests routing to the 'Travel Information' topic.",
+              "inputs": {
+                "parameters": {
+                  "Copilot": "copilots_header_0ad02",
+                  "body/message": "Use content from @{triggerBody()} @{item()?['body/content']}@{item()?['body/contentType']}"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio",
+                  "operationId": "ExecuteCopilot",
+                  "connectionName": "shared_microsoftcopilotstudio"
+                }
+              }
+            }
+          },
+          "runAfter": {}
+        }
+      },
+      "description": "Trigger your agent with certain message upon event: When a new channel message is added."
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

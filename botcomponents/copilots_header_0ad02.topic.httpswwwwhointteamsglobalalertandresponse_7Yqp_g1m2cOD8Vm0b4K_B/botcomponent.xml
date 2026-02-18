@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwwwhointteamsglobalalertandresponse_7Yqp_g1m2cOD8Vm0b4K_B">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.who.int/teams/global-alert-and-response/ website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.who.int/teams/global-alert-and-response/</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

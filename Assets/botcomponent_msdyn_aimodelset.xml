@@ -1,0 +1,5 @@
+<botcomponent_msdyn_aimodelset>
+  <botcomponent_msdyn_aimodel botcomponentid.schemaname="copilots_header_0ad02.action.Customprompt213202625906PM" msdyn_aimodelid.msdyn_aimodelid="a31b79aa-7f0d-4705-872c-0d965f7e87f8">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_msdyn_aimodel>
+</botcomponent_msdyn_aimodelset>

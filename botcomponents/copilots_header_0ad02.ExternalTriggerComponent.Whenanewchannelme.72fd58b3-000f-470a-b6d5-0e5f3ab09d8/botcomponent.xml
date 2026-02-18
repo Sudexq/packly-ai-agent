@@ -1,0 +1,12 @@
+<botcomponent schemaname="copilots_header_0ad02.ExternalTriggerComponent.Whenanewchannelme.72fd58b3-000f-470a-b6d5-0e5f3ab09d8">
+  <componenttype>17</componenttype>
+  <description>Trigger your agent with certain message upon event: When a new channel message is added.</description>
+  <iconurl>https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1787/1.0.1787.4513/teams/icon.png</iconurl>
+  <iscustomizable>0</iscustomizable>
+  <name>When a new channel message is added</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

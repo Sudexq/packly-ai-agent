@@ -1,0 +1,12 @@
+<botcomponent schemaname="copilots_header_0ad02.ExternalTriggerComponent.RecurringCopilotT.2d1d94f5-a079-4d9d-9a73-9515877fd49">
+  <componenttype>17</componenttype>
+  <description>Create a trigger to automatically call your copilot repeatedly</description>
+  <iconurl>https://content.powerapps.com/resource/makerx/static/media/RecurrenceIcon.816b06a2.svg</iconurl>
+  <iscustomizable>0</iscustomizable>
+  <name>Recurring Copilot Trigger</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

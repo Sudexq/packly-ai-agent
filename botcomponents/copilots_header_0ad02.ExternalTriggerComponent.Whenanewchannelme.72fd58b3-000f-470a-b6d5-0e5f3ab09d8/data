@@ -1,0 +1,9 @@
+kind: ExternalTriggerConfiguration
+externalTriggerSource:
+  kind: WorkflowExternalTrigger
+  flowId: 17d274a9-310b-f111-8407-000d3a675809
+
+extensionData:
+  flowName: 158cd241-7b79-071f-3789-f641e6f4b1a2
+  flowUrl: /providers/Microsoft.ProcessSimple/environments/8ee7655c-03e9-e8b1-9360-f1c76dec4a50/flows/158cd241-7b79-071f-3789-f641e6f4b1a2
+  triggerConnectionType: Microsoft Teams

@@ -1,0 +1,215 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRedirect
+  id: main
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: TE5xFO
+      userInput: =Global.arrivalCity
+      additionalInstructions: |-
+        
+        **Using the input:**
+        **{Global.arrivalCity}**
+
+        The agent must generate localized informational output for the destination city.
+        ## **Output must include the following sections in this exact order:**
+        ## **Output must include the following sections in this exact order:**
+        ### **A) Short City Overview**
+        - 1–2 sentences
+        - Neutral, general, safe facts only
+        - No political, sensitive, or unverifiable statements
+
+        ### **B) Climate Characteristics**
+        - Typical climate tendencies (NOT a forecast)
+        - Examples:“winters are mild”
+        “summers are hot and dry”
+        “generally humid coastal weather”
+
+
+        ### **C) Local Tips — exactly 3 items**
+        Practical suggestions such as:
+        - transportation
+        - clothing
+        - local customs
+        - food
+        - navigation
+        - safety basics
+        _Tips must be relevant to the city when possible._
+
+        ### **D) Emergency Numbers**
+        Rules:
+        - If the city is in Türkiye → output Turkish emergency numbers (112 etc.)
+        - If outside Türkiye → use commonly known numbers
+        - If uncertain → output “112 (general emergency)”
+
+        ### **E) Luggage Warnings (NEW)**
+        Using the city’s known general climate & characteristics, output **3 short luggage warnings**.
+        Rules:
+        - Must be **practical** (e.g., “Bring a waterproof jacket if you're visiting during rainy periods”).
+        - Must be based on _typical weather_, not forecasts.
+        - Must avoid extreme, medical, or unsafe advice.
+        - Should be travel-oriented:prohibited items reminders
+        weather-appropriate clothing
+        electrical plug differences
+        weight limits
+        airline-safe items
+        - Always helpful, neutral and safe.
+        - Do not suggest id card, boarding pass or insurance papers and etc.
+
+        Examples:
+        - “Some airlines may restrict power banks in checked luggage.”
+        - “The city can be chilly at night; pack a warm layer.”
+        - “Avoid carrying liquids over 100ml in hand luggage.”
+
+    - kind: Question
+      id: question_TD07Af
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.shopLinks
+      prompt: |-
+        Is there anything you weren’t able to pack and might need to buy? **Just let me know!**
+
+        I’ll find the right shopping links for you.
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: yes
+              displayName: yes
+
+            - id: no
+              displayName: no
+
+        displayName: EmbeddedEntity-x4BXMn
+
+    - kind: ConditionGroup
+      id: conditionGroup_wlm5Qx
+      conditions:
+        - id: conditionItem_m6uylT
+          condition: =Topic.shopLinks = 'copilots_header_0ad02.topic.LocalLuggage.main.question_TD07Af'.yes
+          actions:
+            - kind: Question
+              id: question_tsspuo
+              interruptionPolicy:
+                allowInterruption: true
+
+              variable: init:Topic.shoppingText
+              prompt: Tell me what are missing items?
+              entity: StringPrebuiltEntity
+
+            - kind: SearchAndSummarizeContent
+              id: JekzXC
+              userInput: =Topic.shoppingText
+              additionalInstructions: |-
+                predictionOutput → A list or text containing missing suitcase items.
+                What the Agent Must Do
+                For each item({Topic.shoppingText}) inside predictionOutput:
+                - Analyze the item.
+                - Determine a suitable general product category.
+                - Generate category‑based shopping links from Amazon, AliExpress, and eBay.
+                - Never create a real product, brand, or model.
+                - Only generate category or search‑page links.
+                - Use English categories only.
+                - If the item meaning is unclear, use category: “general travel item”.
+
+                Allowed Link Formats (Mandatory)
+                Amazon:
+                https://www.amazon.com/s?k=
+                AliExpress:
+                https://www.aliexpress.com/wholesale?SearchText=
+                eBay:
+                https://www.ebay.com/sch/i.html?_nkw=
+                The category must be a short, safe English phrase such as:
+                “power bank”, “winter jacket”, “travel adapter”, “toiletry kit”, “rain poncho”, “general travel item”.
+                Output Format (Strict)
+                The agent must output exactly:
+                Shopping Suggestions Based on Your Luggage Contents:
+                :
+                - Amazon:
+                - AliExpress:
+                - eBay:
+
+                :
+                - Amazon:
+                - AliExpress:
+                - eBay:
+
+                ...
+                Rules the Agent Must Follow
+                - Never generate a real product link.
+                - Never invent a brand or model.
+                - Always give exactly 3 links per item.
+                - No Turkish characters in categories.
+                - No dangerous, medical, or chemical items.
+                - If the item cannot be interpreted: use category “general travel item”.
+
+                If predictionOutput is empty or invalid
+                Return exactly:
+                No valid suitcase items found. Unable to generate shopping links.
+
+        - id: conditionItem_mIsoQr
+          condition: =Topic.shopLinks = 'copilots_header_0ad02.topic.LocalLuggage.main.question_TD07Af'.no
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_iRoAe1
+      input:
+        binding:
+          text: =Global.arrivalCity
+          text_1: =Global.departureCity
+          text_2: =Global.startDate
+          text_3: =Global.endDate
+          text_4: =Global.userResponse
+          text_5: =Text("Summary")
+
+      output: {}
+      flowId: a5760f29-0308-f111-8407-000d3a675809
+
+    - kind: Question
+      id: question_RQxLib
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt: Would you like to start again?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          items:
+            - id: Yes
+              displayName: Yes
+
+            - id: No
+              displayName: No
+
+    - kind: ConditionGroup
+      id: conditionGroup_cZmsOp
+      conditions:
+        - id: conditionItem_pqhc0W
+          condition: =Topic.Var1 = 'copilots_header_0ad02.topic.LocalLuggage.main.question_RQxLib'.Yes
+          actions:
+            - kind: BeginDialog
+              id: 77CRRx
+              dialog: copilots_header_0ad02.topic.TravelInformation
+
+            - kind: EndDialog
+              id: DIpyu3
+
+        - id: conditionItem_RE4iGv
+          condition: =Topic.Var1 = 'copilots_header_0ad02.topic.LocalLuggage.main.question_RQxLib'.No
+          actions:
+            - kind: ClearAllVariables
+              id: 8EqxIK
+              variables: AllGlobalVariables
+
+            - kind: BeginDialog
+              id: RJgE6c
+              dialog: copilots_header_0ad02.topic.Goodbye
+
+            - kind: CancelAllDialogs
+              id: h1Bhu6
+
+inputType: {}
+outputType: {}

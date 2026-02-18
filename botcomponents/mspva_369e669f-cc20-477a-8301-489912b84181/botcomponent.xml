@@ -1,0 +1,15 @@
+<botcomponent schemaname="mspva_369e669f-cc20-477a-8301-489912b84181">
+  <category>Testing</category>
+  <componenttype>19</componenttype>
+  <description>mspva_369e669f-cc20-477a-8301-489912b84181</description>
+  <iscustomizable>0</iscustomizable>
+  <name>mspva_369e669f-cc20-477a-8301-489912b84181</name>
+  <parentbotcomponentid>
+    <schemaname>mspva_0f3cf57e-05e9-4cd7-a4a1-31030ffacb80</schemaname>
+  </parentbotcomponentid>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

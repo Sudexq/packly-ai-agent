@@ -1,0 +1,10 @@
+<botcomponent schemaname="copilots_header_0ad02.entity.caseList">
+  <componenttype>11</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>caseList</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

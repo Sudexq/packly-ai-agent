@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpswwweventbritecomdworldwide_IHX7V61yg4hlbHOag43NS">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://www.eventbrite.com/d/worldwide/ website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://www.eventbrite.com/d/worldwide/</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

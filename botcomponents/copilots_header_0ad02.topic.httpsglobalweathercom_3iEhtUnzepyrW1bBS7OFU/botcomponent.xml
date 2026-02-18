@@ -1,0 +1,11 @@
+<botcomponent schemaname="copilots_header_0ad02.topic.httpsglobalweathercom_3iEhtUnzepyrW1bBS7OFU">
+  <componenttype>16</componenttype>
+  <description>This knowledge source searches information on the web found in https://globalweather.com/ website</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://globalweather.com/</name>
+  <parentbotid>
+    <schemaname>copilots_header_0ad02</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
